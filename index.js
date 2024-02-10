@@ -8,6 +8,7 @@ for (var i = 0; i < document.querySelectorAll(".drum").length; i++) {
     var buttonInnerHTML = this.innerHTML;
 
     makeSound(buttonInnerHTML);
+    buttonAnimation(buttonInnerHTML);
 
     
   });
@@ -17,6 +18,7 @@ for (var i = 0; i < document.querySelectorAll(".drum").length; i++) {
 // Detecing keyPress
 document.addEventListener('keydown',function(event) {
   makeSound(event.key);
+  buttonAnimation(event.key);
 });
 
 function makeSound(key){
@@ -55,4 +57,20 @@ switch (key) {
     console.log(innerButton);
     break;
 }
+}
+
+function buttonAnimation(currentKey){
+
+  var activeButton = document.querySelector("."+currentKey);
+
+  // in below way, we can add css in HTML using JS
+  
+  activeButton.classList.add("pressed")
+
+  setTimeout( animation ,100);
+  function animation(){
+    
+    activeButton.classList.remove("pressed");
+
+  }
 }
